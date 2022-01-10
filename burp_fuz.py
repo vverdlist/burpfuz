@@ -15,11 +15,11 @@ class BurpExtender(IBurpExtender, IIntruderPayloadGeneratorFactory):
 
 		return
 
-def getGeneratorName(self):
-	return "Burp Payload Generator"
+	def getGeneratorName(self):
+		return "BurpFuzzer"
 
-def createNewInstance(self, attack):
-	return BurpFuzzer(self, attack)
+	def createNewInstance(self, attack):
+		return BurpFuzzer(self, attack)
 
 class BurpFuzzer(IIntruderPayloadGenerator):
 	def __init__(self, extender, attack):
@@ -63,18 +63,19 @@ class BurpFuzzer(IIntruderPayloadGenerator):
 
 		front, back = original_payload[:offset], original_payload[offset:]
 
-			# random offset insert SQL attempt
-			if picker == 1:
-				front += "'"
+		# random offset insert SQL attempt
+		if picker == 1:
+			front += "'"
 
-			# XSS attempt
-			elif picker == 2:
-				front += "<script>alert('Vulnerable to XSS');</script>"
+		# XSS attempt
+		elif picker == 2:
+			front += "<script>alert('Vulnerable to XSS');</script>"
 
-			# repeat random chunk of original payload
-			elif picker == 3:
-				chunk_length = random.randint(0 ,len(back)-1)
-				repeater = random.randint(1, 10)
-				for _ in range(repeater):
-					front += original_payload[:offset + chunk_length]
+		# repeat random chunk of original payload
+		elif picker == 3:
+			chunk_length = random.randint(0 ,len(back)-1)
+			repeater = random.randint(1, 10)
+			for _ in range(repeater):
+				front += original_payload[:offset + chunk_length]
+		
 		return front + back
