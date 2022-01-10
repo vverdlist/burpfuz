@@ -30,7 +30,7 @@ Fully customizable via bottom section of code:
 					front += original_payload[:offset + chunk_length]
 		return front + back
 
-Change randint values from (1,3) to higher integers to run more advanced scripts you can add.
+Change randint values from (1,3) to higher value (i.e. 1,4 depending on what you want to add) for running more scripts.
 Current code runs SQL, XSS, and random payloads.
 
 Add to burpsuite via Extender tab.
