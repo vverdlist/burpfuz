@@ -1,4 +1,4 @@
-# burpfuz - Simple burp extension for fuzzing POST requests
+# burpfuz - Simple burp extension for fuzzing
 
 Made for the purpose of fuzzing pages w/ input to verify validation/errors/sanitization.
 
