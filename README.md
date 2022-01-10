@@ -3,7 +3,7 @@ Personal fuzzer extension for burp
 
 Made for the purpose of fuzzing pages w/ input to verify validation/errors/sanitization.
 
-Fully customizable via bottom seciont of code:
+Fully customizable via bottom section of code:
 
 	def mutate_payload(self,original_payload):
 		# choose simple mutator or call external script
